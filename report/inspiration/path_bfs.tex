@@ -1,0 +1,8 @@
+\section{BFS}
+Breadth First Search eller BFS forkortet er en algoritme der bruges til at søge i grafer. Denne søger ved at udforske alle edges som er forbundet til startnoden og derefter udforske alle edges forbundet til de noder den fandt fra de første edges. Det vil sige den tager et ekstra niveau af edges hver gang. Måden hvorpå BFS virker gør at den ikke er god til at søge i store grafer, f.eks. en level/map indelt i tiles, da den vil søge alle tiles igennem i en radius udfra start området, indtil den finder hvad du søgte efter. Se figur \ref{dia:bfsgrafik} for demonstration af hvordan BFS's fremgangsmåde fungerer.
+
+\pic{pictures/bfs.png}{BFS's fremgangsmåde}{dia:bfsgrafik}
+
+Måden hvorpå BFS søger i grafen, gør at hvis grafen har mange noder og edges, bliver BFS meget langsom. Se \textcite[230]{buckland}, \textcite{amitastar}.
+
+Implementeringen af BFS algoritmen bruger en queue data struktur, som er af typen FIFO\footnote{First In First Out}. Det vil sige at nye elementer bliver tilføjet til bunden af queue'en, og når man ber om et element fra den, får man et fra toppen.

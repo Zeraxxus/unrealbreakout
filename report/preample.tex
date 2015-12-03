@@ -1,0 +1,46 @@
+\documentclass[a4paper,danish,twoside,12pt]{report}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\usepackage{graphicx}
+\usepackage{refcount}
+\usepackage{calc}
+\usepackage{fancyhdr}
+\usepackage[style=authoryear,backend=bibtex]{biblatex}
+\pagestyle{fancyplain}
+\usepackage{hyperref}
+\setlength{\headheight}{15pt}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\lhead[\thepage]{\rightmark}
+\rhead[\leftmark]{\thepage}
+
+
+\newcommand{\clearemptydoublepage}{\newpage{\thispagestyle{empty}\cleardoublepage}}
+
+\newcommand{\rhschapter}[1]{\clearemptydoublepage\chapter{#1}}
+
+\newcommand{\pic}[3]
+{
+	\begin{figure}
+		\includegraphics[width=\linewidth]{#1}
+		\caption{#2}
+		\label{#3}
+	\end{figure}
+}
+
+
+
+\date{April 2015}
+\newcommand{\reporttitle}{Breakout i Unreal Engine 4}
+\title{\reporttitle}
+
+\newcommand{\reportauthor}{Nichlas Bruun, Mathias Forsberg \& Bjarne Kristensen}
+\author{\reportauthor}
+
+\cfoot[\reporttitle\\\reportauthor]{\reporttitle\\\reportauthor}
+
+\newcounter{appendixspages}
+\addbibresource{sources.bib}

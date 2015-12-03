@@ -1,0 +1,11 @@
+\section{Anvendelses områder}
+
+Hvilke pathfinding algoritmer er bedst i hvilke situationer?
+A* og Dijkstra egner sig begge til pathfinding i et level/map. Hvilken der er bedst at bruge kommer an på hvilken situation det er, f.eks. hvis du vil flytte en enhed i et RTS såsom StarCraft, kan A* bruges til at finde den korteste vej til destinationspunktet. A* søger i retning af destinationen se figur \ref{dia:astar1}. Hvis man skal finde den nærmeste af en type f.eks. nærmeste healthbox i et level/map er dijkstra bedst da denne laver en cirkelformet søgning ud fra startnoden se figur \ref{dia:dijkstra1}. 
+
+A* kan kombineres med Manhattan Distance Heuristic til at finde den nærmeste healthpack. Dette har dog ulæmpen at hvis der er en væg imellem dem, f.eks. at den er i et andet rum, vil den stadig se den som den nærmeste healthpack. Man kan med Manhattan Distance Heuristic lave en liste over f.eks. de 5 nærmeste healthpacks, og så beregne en A* path til hver af dem, og så vælge den korteste fundet. Dette kan være hurtigere end Dijkstra, hvis der er langt ud til den nærmeste healthpack. Er man i den situation at AI'en ikke har adgang til healthpack'enes positioner, kan A* ikke bruges og Dijkstra vil være den hurtigste til at finde den nærmeste healthpack.
+
+DFS kan bruges i spil som tilfældigt genererer baner, f.eks. Diablo II, for at teste om spilleren kan bevæge sig fra et start punkt til et slut punkt. Dette sikrer at den genererede bane kan bruges, og ikke har nogle ting som gør at spilleren sidder fast og ikke kan komme videre.
+
+BFS er ikke særlig effektiv i forhold til Dijkstra, hvis der er kost associeret med valg, men den tager kortere tid at implementere, fordi at det er en mere simpel algoritme. Den er så også hurtigere end Dijkstra til situationer hvor der ikke er en kost associeret med valg.
+BFS kan bruges i situationer, hvor man gerne vil finde ud af hvilke bygninger, der skal bygges først i f.eks. StarCraft, før du kan bygge en avanceret unit. Derved findes alle kravene med BFS.

@@ -1,0 +1,21 @@
+\section{A*}
+A*\footnote{A* udtales "ay-star"} er en forbedret Dijkstra søgning, hvor man i forvejen ved hvilken retning man skal bevæge sig imod. Denne algoritme er lidt mere kompleks og kræver f.eks. et koordinat system med lidt flere regler/guidelines at følge. Dette gør at vi kan estimere hvilken retning man skal bevæge sig i. Man lægger en ekstra kost på at bevæge sig væk fra sit mål. Er forsøgene fra startpunktet dyrere at foretage end den billigste fundne, opgives videre søgning ud af de træer. Mødes der en forhindring på vej mod målet, splittes træt igen, og der forsættes ud af begge træer indtil den ene igen bliver dyrere at bevæge sig ud af end den anden. Bliver den nuværende søgning dyrere end de gamle træer, der er opgivet, forsættes søgning ud af disse træer igen. Som det kan ses i figur \ref{dia:astar1}, spares der processorkraft ved ikke at udforske flere nodes ud af træer som bevæger sig længere væk fra målet. Se \textcite[241]{buckland}, \textcite{amitastar}, \textcite[215]{MillingtonFunge}.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.49\linewidth]{pictures/pathfinding/astar1}
+		\includegraphics[width=0.49\linewidth]{pictures/pathfinding/astar2}
+		\caption{A* en modificeret Dijkstra hvor vi kender målets position, og derved kan estimere hvilken retning der er kortest at bevæge sig i mod. Derved kan man forhindre at bruge processorkraft på unødvendige veje.}
+		\label{dia:astar1}
+	\end{center}
+\end{figure}
+
+Hvis der nu er flere mål af samme type som man kan tage hen til, f.eks. at finde den nærmeste health powerup, kan man stadig bruge A*. Men det kræver at algoritmen har adgang til disse positioner. For at finde den nærmeste node kan man bruge en simpel beregning som kaldes Manhattan Distance Heuristic. Ved at sammenligne start positionens x og y, med alle mulige powerup positioner, kan man udregne en forskel i x og y afstand imellem de 2 positioner, se figur \ref{dia:manhattan}. Denne afstand målt i x og y lægges sammen, og så har man en kost fra start positionen til hver powerup. Med denne metode kan man vælge det mindste tal, og så har man den nærmeste node, dog uden hensyn til forhindringer. Man kan vælge at lave beregningerne på de nærmeste N antal, og vælge den som så returnere den korteste vej.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.49\linewidth]{pictures/pathfinding/manhattan}
+		\caption{Manhattan Heuristics: afstanden x + y imellem de to punkter anvendes som en kost. Derved den tætteste af flere punkter hurtig beregnes ud fra et start punkt.}
+		\label{dia:manhattan}
+	\end{center}
+\end{figure}

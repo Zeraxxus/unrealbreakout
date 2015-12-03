@@ -1,0 +1,8 @@
+\section{DFS}
+Den første pathfinding algoritme vi starter med er Depth First Search eller DFS forkortet. Denne algoritme bruges til at søge i grafer opbygget af noder og edges. Algoritmen søger ved at gå så dybt ned i grafen som muligt til at starte med, og når den så kommer til en blindgyde, går den tilbage til en node længere oppe og fortsætter derfra. Dette fortsætter indtil hele grafen er udforsket eller målet er nået. Se figur \ref{dia:dfsgrafik} for en demonstration af måden hvorpå DFS's fremgangsmåde virker. Se også \textcite[210]{buckland}. 
+
+Da DFS søger hele vejen til enden i en retning og så backtracker, gør dette den dårlig til at søge i store grafer med mange edges og noder.
+
+\pic{pictures/dfs.png}{DFS's fremgangsmåde}{dia:dfsgrafik}
+
+Implementeringen af DFS algoritmen bruger en stack data struktur. Denne er af typen LIFO\footnote{Last In First Out}, dvs. at nye elementer i stack'en bliver indsat i toppen, og når man henter, henter man fra toppen af stack'en.

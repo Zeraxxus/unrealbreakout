@@ -1,0 +1,73 @@
+\addtocounter{appendixspages}{\getpagerefnumber{totalpages}}
+\addtocounter{appendixspages}{-\getpagerefnumber{lastreportpage}}
+\thispagestyle{empty}
+\begin{titlepage}
+\fontsize{11pt}{13pt}\selectfont
+\begin{nopagebreak}
+{\samepage 
+\begin{tabular}{lr}
+\parbox{14.5cm}{
+  {\LARGE Dania}
+
+  {\small Academy of Higher Education}
+  \vspace{-0.3cm}\\
+\hrule
+\vspace{0.2cm}
+  {\bf Academy Profession (AP) Degree in Computer Science}
+ }   & \hspace{-2.8cm} {  \includegraphics[width=23mm]{pictures/dania}}
+\end{tabular}
+  
+
+\begin{tabular}{cc}
+\parbox{8cm}{
+\hspace{2cm}
+\begin{description}
+
+\item {\bf TITLE:} 
+
+Breakout in Unreal Engine 4
+
+\end{description}
+
+\parbox{8cm}{
+
+\begin{description}
+\item {\bf PROJECT PERIOD:}\\
+  GrnXXdatXX, \\
+  December 2015\\
+  \hspace{4cm}
+\item {\bf PROJECT GROUP:}\\
+  XX\\
+  \hspace{4cm}
+\item {\bf STUDENTS:}\\
+  Nichlas Bruun\\
+  Mathias Forsberg\\
+  Bjarne Kristensen\\
+  \hspace{2cm}
+\item {\bf SUPERVISOR:}\\
+  Jonathan\\
+\end{description}
+}
+\begin{description}
+\item{ {\bf COPIES:} 1}
+\item{ {\bf REPORT PAGES:} \pageref{lastreportpage} }
+\item{ {\bf APPENDIX PAGES:} \arabic{appendixspages} }
+\item{ {\bf TOTAL PAGES:} \pageref{totalpages} }
+\end{description}
+\vfill } &
+\parbox{7cm}{
+  \vspace{.15cm}
+  \flushright
+  \fbox{
+    \parbox{6.5cm}{{\bf ABSTRACT:}\vspace{0.5cm}
+     {\vfill{
+     %\fontsize{9pt}{11pt}\selectfont
+     \input{abstract.tex}
+     }}\vspace{0.3cm}
+     }
+     }
+     }
+\end{tabular}
+}
+\end{nopagebreak}
+\end{titlepage}

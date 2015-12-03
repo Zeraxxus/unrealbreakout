@@ -1,0 +1,28 @@
+\rhschapter{Pathfinding algoritmer}
+
+Følgende hovedspørgsmål er blevet stillet:
+Hvilke pathfinding algoritmer anvendes ofte i spiludvikling og på hvilke måder er de forskellige?
+
+Artificial intelligence og pathfinding bruges i rigtig mange spil. Når en enhed i et spil skal vælge at handle ud fra hvad spilleren gør er der tale om AI\footnote{Artificial Intelligence}. Denne intelligens skal ofte navigere eller foretage valg ud fra hvad spilleren gør. Pathfinding i sig selv er også brugbar uden kunstig intelligens, hvis man f.eks. skal navigere spilleren i terræn med musen rundt om forhindringer. I StarCraft, som er et RTS\footnote{Real Time Strategy} spil, skal man bygge bestemte bygninger for at kunne producere bestemte enheder. Pathfinding kan også bruges til at finde ud af hvilke bygninger der skal bygges i hvilken rækkefølge, for at AI'en kan bygge en bestemt enhed. Se \textcite[193]{buckland}, \textcite[198]{MillingtonFunge}. 
+
+Der findes flere forskellige former for pathfinding, nogle er node baseret og kan anvendes til abstrakt pathfinding. Andre former er node og grid baseret og kan bruges med 2 eller 3 akser, som i et 2 eller 3 dimensionalt koordinatsystem. Se \textcite[193-203]{buckland}.
+
+De følgende sektioner vil afdække de mest anvendte pathfinding algoritmer inden for computer spil.
+
+%DFS
+\input{path_dfs.tex}
+
+%BFS
+\input{path_bfs.tex}
+
+%Dijkstra
+\input{path_dijkstra.tex}
+
+%AStar
+\input{path_astar.tex}
+
+%Avendelses områder
+\input{path_anvendelse.tex}
+
+%Afrunding
+\input{path_afruding.tex}
