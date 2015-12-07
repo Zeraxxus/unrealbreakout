@@ -3,9 +3,41 @@
 \section{Systemdefinition}
 
 \section{Funktionstabel}
+Funktions tabel.
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{lll}
+\multicolumn{1}{c}{Navn}          & \multicolumn{1}{c}{Kompleksitet} & \multicolumn{1}{c}{Type} \\ \hline
+\multicolumn{1}{l|}{Start Game}   & \multicolumn{1}{l|}{simpel}      & update                   \\
+\multicolumn{1}{l|}{Exit Menu}    & \multicolumn{1}{l|}{simpel}      & update                   \\
+\multicolumn{1}{l|}{Exit Game}    & \multicolumn{1}{l|}{simpel}      & update                   \\
+\multicolumn{1}{l|}{Release Ball} & \multicolumn{1}{l|}{medium}      & update / compute         \\
+\multicolumn{1}{l|}{Bounce Ball}  & \multicolumn{1}{l|}{medium}      & update / compute         \\
+\multicolumn{1}{l|}{Move Paddle}  & \multicolumn{1}{l|}{simpel}      & update / compute         \\
+\multicolumn{1}{l|}{Break Brick}  & \multicolumn{1}{l|}{simpel}      & update                   \\
+\multicolumn{1}{l|}{Change Score} & \multicolumn{1}{l|}{simpel}      & update / compute         \\
+\multicolumn{1}{l|}{Show Score}   & \multicolumn{1}{l|}{simpel}      & read                    
+\end{tabular}
+\end{table}
 
 \section{Klasse Diagram}
 
 \section{Eventtabel}
+Event tabel.
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{l|ccccccc}
+\multicolumn{1}{c}{Events/Klasser} & Paddle & Ball & Brick & Menu & Gameworld & Camera & UI \\ \hline
+Player clicks on menu obj &                            &                          &                           & X                        &                               &                            &                        \\
+Player moves paddle          & X                          &                          &                           &                          & X                             &                            &                        \\
+Player releases ball         & X                          & X                        &                           &                          & X                             &                            &                        \\
+Ball collides with object    & X                          & X                        & X                         &                          & X                             &                            &                        \\
+Score updates                &                            & X                        & X                         &                          & X                             &                            & X                     
+\end{tabular}
+\end{table}
 
 \section{Use Cases}
