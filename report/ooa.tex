@@ -31,40 +31,42 @@ Der vil være fokus på spillets kode og funktionalitet i første UP-iteration. 
 i Unreal Engine 4, og styres med keyboard. Spillet vil kunne køre på en windows-pc købt indenfor de sidste 5 år.
 Ansvaret over for spilleren vil i første UP-itereation være et meget basalt virkende spil.
 \section{Funktionstabel}
-Funktions tabel.
+Vi har udarbejdet en funktionstabel (se  tabel \ref{funktionstabel}) ud fra de funktioner, som vi har planlagt skulle indgå i programmets første iteration. Vi har inddelt disse efter navn, kompleksitet og type. Navnet er hvad funktionen kommer til at omhandle og kompleksitet er hvor udfordrende, vi forventer, det bliver at programmere den pågældende funktion. Typen er til at bestemme, om det er noget der skal opdateres, læses, sende et signal eller beregne noget. Vi har ikke noget komplekst i vores spil, men vi har to funktioner som vi regner med er medium, og det er relateret til boldens interaktion med andre objekter. De andre funktioner virker til at være simple at implementere.
 \begin{table}[]
 \centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{lll}
-\multicolumn{1}{c}{Navn}          & \multicolumn{1}{c}{Kompleksitet} & \multicolumn{1}{c}{Type} \\ \hline
-\multicolumn{1}{l|}{Start Game}   & \multicolumn{1}{l|}{simpel}      & update                   \\
-\multicolumn{1}{l|}{Exit Menu}    & \multicolumn{1}{l|}{simpel}      & update                   \\
-\multicolumn{1}{l|}{Exit Game}    & \multicolumn{1}{l|}{simpel}      & update                   \\
-\multicolumn{1}{l|}{Release Ball} & \multicolumn{1}{l|}{medium}      & update / compute         \\
-\multicolumn{1}{l|}{Bounce Ball}  & \multicolumn{1}{l|}{medium}      & update / compute         \\
-\multicolumn{1}{l|}{Move Paddle}  & \multicolumn{1}{l|}{simpel}      & update / compute         \\
-\multicolumn{1}{l|}{Break Brick}  & \multicolumn{1}{l|}{simpel}      & update                   \\
-\multicolumn{1}{l|}{Change Score} & \multicolumn{1}{l|}{simpel}      & update / compute         \\
-\multicolumn{1}{l|}{Show Score}   & \multicolumn{1}{l|}{simpel}      & read                    
+\caption{Funktionstabel}
+\label{funktionstabel}
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{Navn} & \multicolumn{1}{c|}{Kompleksitet} & \multicolumn{1}{c|}{Type} \\ \hline
+Start Game & simpel & update \\ \hline
+Exit Menu & simpel & update \\ \hline
+Exit Game & simpel & update \\ \hline
+Release Ball & medium & update / compute \\ \hline
+Bounce Ball & medium & update / compute \\ \hline
+Move Paddle & simpel & update / compute \\ \hline
+Break Brick & simpel & update \\ \hline
+Change Score & simpel & update / compute \\ \hline
+Show Score & simpel & read \\ \hline
 \end{tabular}
 \end{table}
 
 \section{Klasse Diagram}
 
-\section{Eventtabel}
-Event tabel.
+\section{Hændelsestabel}
+En hændelse, i objekt orienteret kontekst, er en situation hvor en eller flere objekter er involveret. Det er f.eks. hændelser hvor spilleren giver noget input som objekter i spillet skal agere på. Det kan også være hændelser i spillet som sker når 2 objekter kolliderer med hinanden og en aktion ønskes. I tabel \ref{eventtabel} er der opstillet hvilke hændelser vi regner med vil ske, og hvilke objekter kan være involveret i disse hændelser.
 \begin{table}[]
 \centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{l|ccccccc}
-\multicolumn{1}{c}{Events/Klasser} & Paddle & Ball & Brick & Menu & Gameworld & Camera & UI \\ \hline
-Player clicks on menu obj &                            &                          &                           & X                        &                               &                            &                        \\
-Player moves paddle          & X                          &                          &                           &                          & X                             &                            &                        \\
-Player releases ball         & X                          & X                        &                           &                          & X                             &                            &                        \\
-Ball collides with object    & X                          & X                        & X                         &                          & X                             &                            &                        \\
-Score updates                &                            & X                        & X                         &                          & X                             &                            & X                     
+\caption{Hændelsestabel}
+\label{eventtabel}
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+Events/Klasser & Paddle & Ball & Brick & Menu & Gameworld & Camera & UI \\ \hline
+Player clicks on menu obj &  &  &  & X &  &  &  \\ \hline
+Player moves paddle & X &  &  &  & X &  &  \\ \hline
+Player releases ball & X & X &  &  & X &  &  \\ \hline
+Ball collides with object & X & X & X &  & X &  &  \\ \hline
+Score updates &  & X & X &  & X &  & X \\ \hline
 \end{tabular}
 \end{table}
 

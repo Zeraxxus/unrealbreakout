@@ -1,16 +1,1 @@
 \rhschapter{Implementering}
-
-\section{Blueprints}
-Blueprints er en speciel type asset som giver en node baseret interface til at lave nye klasser og udvide klasser, så man kan scripte objekter i levels og widgets. Blueprints er et værktøj der giver designers og gameplay programmører mulighed for hurtigt at kunne iterere deres idéer uden at skulle skrive kode.
-
-Det er stadig mulig selv at oprette klasser med C++ kode uden at bruge blueprints. Blueprints kan bruges til at udvide klasser som et skrevet i C++, gemme og modificeret properties, og håndtere objekt instancer i klasser.
-
-Ligesom i C++ og C# har blueprints member variables/fields, member functions, og en constructor.
-
-Der er 3 typer blueprints:
-
-Blueprint Class
-Data-Only Blueprint
-Level Blueprint
-
-Blueprint Class er den blueprint man bruger når man vil have et object til at gøre noget inde i en level. Man laver noget funktionalitet i den og tilføjer den til et objekt i en level. Data-Only Blueprints indeholder kun nodes, variabler og componenter som den har nedarvet og der kan ikke tilføjes nyt. Det den bruges til er at ændre på objekter i en level og lave variationer som alle har samme interface, men forskellig adfærd. Level Blueprint er en blueprint som altid findes når man opretter en ny level. Det er et overordnet blueprint som eksisterer sammen med de Blueprints som sidder på objekter i banen. Man kan bruge Level Blueprint til at oprette events som andre objekters blueprints kan agere på. Man kan også oprette instancer af andre assets gennem Level Blueprint, som f.eks. et UI der skal tegnes i Camera Actor'en i banen. Se \cite{blueprint} for mere information.
