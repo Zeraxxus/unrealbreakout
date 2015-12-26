@@ -51,7 +51,43 @@ Show Score & simpel & read \\ \hline
 \end{tabular}
 \end{table}
 
-\section{Klasse Diagram}
+\section{Analyse Diagram}
+
+\subsection{Menu}
+Menu klassen kommer til at være et "level-blueprint" i Unreal engine. Den skal håndtere indlæsning af menupunkter, i form af
+knapper og baggrundsgrafik. Menuen kommer til at håndtere alle "OnClick events" som er i menuen, hvilket i dette tilfælde er en
+"Play-knap" og en "Quit-knap". Som i samme nævnte rækkfølge, kommer til at starte spillet, og lukke spillet.
+
+\subsection{Camera}
+Camera håndtere spillets synspunkt, altså hvad spilleren kan se. Kameraet kan vælge ikke at vise spilleren nogle objekter,
+som der muligvis har været behov for under udviklingen af spillet. Kameraet kan beskrives som en support klasse, da den ikke
+direkte ændre på nogle elementer, men bare viser eller ikke viser dem. Samme klasse vil være brugt både på kameraet i menuen, og
+kameraet i selve spillet.
+
+\subsection{GameWorld}
+GameWorld vil ligesom Menu-klassen, være et level-blueprint. GameWorld kommer til at være roden til alt spillets logik, og skal
+bl.a. indlæse alle spillets elementer når spillet startes og når spillet skifter bane. Klassen kommer også til at lave funktionskald,
+til de andre klasser der er relevant i spillet f.eks. Brick og paddle.
+
+\subsection{UI}
+UI-klassen vil holde styr på at vise og opdatere brugergrænsefladen i spillet. 
+Dette vil være at vise og opdatere spillerens point og liv.
+
+\subsection{Brick}
+Brick-klassen kommer til at ligge på alle de objekter spilleren skal forsøge at ramme med bolden. Klassen vil håndtere at når
+bolden kollidere med en "brick" vil denne brick forsvinde, og der vil blive lavet de korrekte funktionskald til at opdatere
+spillerens score, alt efter hvilken type af brick der er tale om.
+
+\subsection{Paddle}
+Paddle-klassen kan tolkes som selve spillerens klasse, denne klasse vil håndtere input fra spilleren. Altså at når spilleren
+trykker på venstre eller højre pil, bevæger paddlen sig i den korrekte retning. Den vil også give de korrekte funktionskald
+til bolden, alt efter hvilken del af paddlen rammes, og give den korrekte vinkel med til bolden. Når spillet startes eller når spilleren dør,
+Vil paddlen også kunne bruges til at starte spillet. Dette gøres ved at bolden sidder fast på paddlen, og skydes afsted med mellemrumstasten.
+
+\subsection{Ball}
+Ball er bolden i spillet, og klassen vil håndtere bolden, samtidigt med de tidligere nævnte funktionskald. Bolden vil også stå for
+vind/tab-konditionen i spillet, ved at tjekke om den er udenfor bunden af skærmen, og lade spilleren miste liv hvis den er udenfor.
+
 
 \section{Hændelsestabel}
 En hændelse, i objekt orienteret kontekst, er en situation hvor en eller flere objekter er involveret. Det er f.eks. hændelser hvor spilleren giver noget input som objekter i spillet skal agere på. Det kan også være hændelser i spillet som sker når 2 objekter kolliderer med hinanden og en aktion ønskes. I tabel \ref{eventtabel} er der opstillet hvilke hændelser vi regner med vil ske, og hvilke objekter kan være involveret i disse hændelser.
