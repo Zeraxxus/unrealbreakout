@@ -1,37 +1,36 @@
 \rhschapter{Object Orienteret Analyse}
 
 \section{Systemdefinition}
+\subsection{FACTOR}
 \textbf{Functionality}
 \newline
--Bevægelse af paddle, Fjernelse af bricks, Scoring, Liv.
+-Bevægelse af Paddle, Fjernelse af bricks, Scoring, Liv.
 \newline
 \textbf{Application Domain}
 \newline
--Klassisk arcade spil, i første iteration fokus på kode
+-Klassisk arkade spil, fokus på kode
 og funktionalitet.
 \newline
 \textbf{Condition}\newline
--Udvikles til windows, baseret på klassisk arcade spil.
+-Udvikles til Windows styresystemer, baseret på klassisk arkade spil.
 \newline
 \textbf{Technology}\newline
--Udvikles i Unreal Engine 4, styres med keyboard, ikke krav
+-Udvikles i Unreal Engine 4, styres med keyboard og har ikke krav
 til kraftig PC.
 \newline
 \textbf{Objects}\newline
--Paddle, ball, Bricks.
+-Paddle, Ball, Bricks.
 \newline
 \textbf{Responsibility}\newline
--Et virkende spil.
+-Et spilbart produkt.
 
 \subsection{Sytemdefinition}
-Unreal Breakout er et klassisk arkade spil, som giver spilleren mulighed for at opleve det klassiske gameplay fra Atari 
-Breakout. Som består af at spilleren bevæger en "paddle" i bunden af skærmen, for at forsøge at holde en bold
-inden for skærmens rammer, samtidigt med at der skal opnås point ved at fjerne "bricks" i toppen af skærmen.
-Der vil være fokus på spillets kode og funktionalitet i første UP-iteration. Spillet udvikles til windows pc
-i Unreal Engine 4, og styres med keyboard. Spillet vil kunne køre på en windows-pc købt indenfor de sidste 5 år.
-Ansvaret over for spilleren vil i første UP-itereation være et meget basalt virkende spil.
+Unreal Breakout er et klassisk arkade spil, som giver spilleren mulighed for at opleve det klassiske gameplay fra Atari Breakout. Som består af at spilleren bevæger en "paddle" i bunden af skærmen, for at forsøge at holde en bold inden for skærmens rammer, samtidigt med at der skal opnås point ved at fjerne "bricks" i toppen af skærmen.
+Der vil være fokus på spillets kode og funktionalitet. Spillet udvikles til Windows PC
+i Unreal Engine 4, og styres med keyboard. Spillet vil kunne køre på en Windows PC købt indenfor de sidste 5 år.
+Ansvaret over for spilleren vil være et meget basalt virkende spil.
 \section{Funktionstabel}
-Vi har udarbejdet en funktionstabel (se  tabel \ref{funktionstabel}) ud fra de funktioner, som vi har planlagt skulle indgå i programmets første iteration. Vi har inddelt disse efter navn, kompleksitet og type. Navnet er hvad funktionen kommer til at omhandle og kompleksitet er hvor udfordrende, vi forventer, det bliver at programmere den pågældende funktion. Typen er til at bestemme, om det er noget der skal opdateres, læses, sende et signal eller beregne noget. Vi har ikke noget komplekst i vores spil, men vi har to funktioner som vi regner med er medium, og det er relateret til boldens interaktion med andre objekter. De andre funktioner virker til at være simple at implementere.
+Der er blevet udarbejdet en funktionstabel (se  tabel \ref{funktionstabel}) ud fra de funktioner, som er  planlagt at skulle indgå i programmets første version. Disse funktioner er inddelt efter navn, kompleksitet og type. Navnet er hvad funktionen kommer til at omhandle og kompleksitet er hvor udfordrende det vil være at lave den pågældende funktion. Typen er til at bestemme, om det er noget der skal opdateres, læses, sende et signal eller beregne noget. Der er ikke noget komplekst i spillet, der er to funktioner som menes at have en kompleksitet på medium, dette relatere til bolden interaktion med andre objekter. De resterende funktioner menes at være simple at implementere.
 \begin{table}[]
 \centering
 \caption{Funktionstabel}
@@ -54,43 +53,30 @@ Show Score & simpel & read \\ \hline
 \section{Analyse Diagram}
 
 \subsection{Menu}
-Menu klassen kommer til at være et "level-blueprint" i Unreal engine. Den skal håndtere indlæsning af menupunkter, i form af
-knapper og baggrundsgrafik. Menuen kommer til at håndtere alle "OnClick events" som er i menuen, hvilket i dette tilfælde er en
-"Play-knap" og en "Quit-knap". Som i samme nævnte rækkfølge, kommer til at starte spillet, og lukke spillet.
+Menu klassen kommer til at være et "level blueprint" i Unreal Engine. Den skal håndtere indlæsning af menupunkter, i form af knapper og baggrundsgrafik. Menuens blueprint kommer til at håndtere "OnClick events" hvilket i dette tilfælde er en "Play-" og en "Quit-knap". Som i samme nævnte rækkefølge, kommer til at starte spillet, og lukke spillet.
 
 \subsection{Camera}
-Camera håndtere spillets synspunkt, altså hvad spilleren kan se. Kameraet kan vælge ikke at vise spilleren nogle objekter,
-som der muligvis har været behov for under udviklingen af spillet. Kameraet kan beskrives som en support klasse, da den ikke
-direkte ændre på nogle elementer, men bare viser eller ikke viser dem. Samme klasse vil være brugt både på kameraet i menuen, og
-kameraet i selve spillet.
+Camera håndtere spillets synspunkt, altså hvad spilleren kan se. Kameraet kan vælge ikke at vise spilleren nogle objekter, som der muligvis har været behov for under udviklingen af spillet. Kameraet kan beskrives som en support klasse, da den ikke direkte ændre på nogle elementer, men bare viser eller ikke viser dem. Samme blueprint vil være brugt både på kameraet i menuen, og kameraet i selve spillet.
 
 \subsection{GameWorld}
-GameWorld vil ligesom Menu-klassen, være et level-blueprint. GameWorld kommer til at være roden til alt spillets logik, og skal
-bl.a. indlæse alle spillets elementer når spillet startes og når spillet skifter bane. Klassen kommer også til at lave funktionskald,
-til de andre klasser der er relevant i spillet f.eks. Brick og paddle.
+GameWorld vil ligesom Menu-klassen, være et "level blueprint". GameWorld kommer til at være roden til alt spillets logik, og skal bl.a. indlæse alle spillets elementer når spillet startes, og når spillet skifter bane. Klassen kommer også til at lave funktionskald til de andre klasser der er relevant i spillet f.eks. Brick og Paddle.
 
 \subsection{UI}
 UI-klassen vil holde styr på at vise og opdatere brugergrænsefladen i spillet. 
-Dette vil være at vise og opdatere spillerens point og liv.
+Som i dette tilfælde vil være at vise og opdatere spillerens point og liv.
 
 \subsection{Brick}
-Brick-klassen kommer til at ligge på alle de objekter spilleren skal forsøge at ramme med bolden. Klassen vil håndtere at når
-bolden kollidere med en "brick" vil denne brick forsvinde, og der vil blive lavet de korrekte funktionskald til at opdatere
-spillerens score, alt efter hvilken type af brick der er tale om.
+Brick-klassen kommer til at ligge på alle de objekter spilleren skal forsøge at ramme med bolden. Klassen vil håndtere at når bolden kollidere med en "Brick" vil denne Brick forsvinde, og der vil blive lavet de korrekte funktionskald til at opdatere spillerens score, alt efter hvilken type af Brick bolden rammer.
 
 \subsection{Paddle}
-Paddle-klassen kan tolkes som selve spillerens klasse, denne klasse vil håndtere input fra spilleren. Altså at når spilleren
-trykker på venstre eller højre pil, bevæger paddlen sig i den korrekte retning. Den vil også give de korrekte funktionskald
-til bolden, alt efter hvilken del af paddlen rammes, og give den korrekte vinkel med til bolden. Når spillet startes eller når spilleren dør,
-Vil paddlen også kunne bruges til at starte spillet. Dette gøres ved at bolden sidder fast på paddlen, og skydes afsted med mellemrumstasten.
+Paddle-klassen kan tolkes som selve spillerens klasse, denne klasse vil håndtere input fra spilleren. Det vil sige at når spilleren trykker på venstre eller højre pil, bevæger Paddlen sig i den korrekte retning. Den vil også give de korrekte funktionskald til bolden, alt efter hvilken del af Paddlen bolden rammer, og give den korrekte vinkel med til bolden. Når spillet startes eller når spilleren dør, Vil Paddlen også kunne bruges til at skyde bolden afsted, da bolden er stationær på Paddlen i begyndelsen. Bolden skydes afsted fra paddlen ved brug af mellemrumstasten. 
 
 \subsection{Ball}
-Ball er bolden i spillet, og klassen vil håndtere bolden, samtidigt med de tidligere nævnte funktionskald. Bolden vil også stå for
-vind/tab-konditionen i spillet, ved at tjekke om den er udenfor bunden af skærmen, og lade spilleren miste liv hvis den er udenfor.
+Ball er bolden i spillet, og klassen vil håndtere bolden, samtidigt med de tidligere nævnte funktionskald. Bolden vil også stå for vind/tab-konditionen i spillet, ved at tjekke om den er udenfor bunden af skærmen, og lade spilleren miste liv hvis den er udenfor.
 
 
 \section{Hændelsestabel}
-En hændelse, i objekt orienteret kontekst, er en situation hvor en eller flere objekter er involveret. Det er f.eks. hændelser hvor spilleren giver noget input som objekter i spillet skal agere på. Det kan også være hændelser i spillet som sker når 2 objekter kolliderer med hinanden og en aktion ønskes. I tabel \ref{eventtabel} er der opstillet hvilke hændelser vi regner med vil ske, og hvilke objekter kan være involveret i disse hændelser.
+En hændelse, i objektorienteret kontekst, er en situation hvor en eller flere objekter er involveret. Det er f.eks. hændelser hvor spilleren giver et input som objekter i spillet skal agere på. Det kan også være hændelser i spillet som sker når to objekter kolliderer med hinanden og en aktion ønskes. I tabel \ref{eventtabel} er der opstillet hvilke hændelser vi regner med vil ske, og hvilke objekter der kan være involveret i disse hændelser.
 \begin{table}[]
 \centering
 \caption{Hændelsestabel}
