@@ -11,10 +11,11 @@ Noget introduktion til vores implementering.
 
 
 \section{Paddle}
-
+Paddlen er inddelt i højre og venstre halvdel, dette er gjort ved lave et tjek på hvor bolden rammer paddlen. Hvis boldens X-værdi når den rammer paddlen er mindre end placeringen af paddlens midte, har bolden ramt venstre side og er X-værdie derimod større end placeringen af paddlens midte, har den ramt højre. Hele dette tjek bruges til at give bolden den rette udgangsvinkel efter kollisionen med paddlen er sket. Herefter bliver der lavet et tjek på hvor boldens tidligere placering var, hvilket bruges til at udregne hvilken retning bolden kommer fra. Et eksempel på dette kan være hvis bolden kommer fra højre side i forhold til paddlens placering og rammer højre side af paddlen vil bolden flyve tilbage i den retning den kom fra, ved at vende fortegn i begge af boldens akser.\newline
+ \textcolor{red}{TILFØJ HVORDAN VI HAR LAVET INPUT LOGIC BJARNE }
 
 \section{Ball}
-
+Hvis bolden ikke er blevet skudt af fra paddlen vil den være låst fast til paddlen. Derimod hvis den er skudt fra paddlen vil bolden rykke sig med den hastighed der er sat af den lokale variabel \textit{direction vector}. Direction vector variablen bliver ændret alt efter hvad bolden kollidere med. Som tidligere nævnt i paddle afsnittet ligger logikken til kollision med paddlen i paddle blueprintet, derfor er der et tjek på om bolden kollidere med paddlen. Kollidere bolden ikke med paddlen bliver der tjekket på hit eventets \textit{hit normal variabel}, denne værdi fortæller hvilken side af bolden kollidere. Dette kan f.eks. være hvis \textit{hit normal X} er minus 1 er der tale om at boldens venstre side kollidere med et andet objekt. Gennem alle disse tjek kan der udregnes hvilket fortegn i hvilken akse der skal vendes i direction vectoren for at bolden får den korrekte retning efter kollision. I selve bold blueprintet ligger der også tjek på om spilleren har flere liv tilbage, eller om alle brikker er forsvundet fra spilverdenen. Dette sørger for at spilleren kommer tilbage til menuen hvis alle liv er mistet og at der bliver skabt nye brikker hvis alle brikkerne er ramt af bolden. Blueprintet indeholder også et tjek på om bolden er indenfor banen, befinder bolden sig ikke på banene mere vil der blive trukket 1 fra spillerens liv. Sidst men ikke mindst ligger der også logik for inputtet til at skyde bolden fra paddlen, dette gøres ved at når der trykkes på mellemrumstasten sættes den boolske værdi i \textit{has shot} variablen til true, og bolden går igennem det tidligere nævnte tjek.  
 
 \section{Brick}
 
