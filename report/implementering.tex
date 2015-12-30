@@ -11,8 +11,59 @@ Noget introduktion til vores implementering.
 
 
 \section{Paddle}
-Paddlen er inddelt i højre og venstre halvdel, dette er gjort ved lave et tjek på hvor bolden rammer paddlen. Hvis boldens X-værdi når den rammer paddlen er mindre end placeringen af paddlens midte, har bolden ramt venstre side og er X-værdie derimod større end placeringen af paddlens midte, har den ramt højre. Hele dette tjek bruges til at give bolden den rette udgangsvinkel efter kollisionen med paddlen er sket. Herefter bliver der lavet et tjek på hvor boldens tidligere placering var, hvilket bruges til at udregne hvilken retning bolden kommer fra. Et eksempel på dette kan være hvis bolden kommer fra højre side i forhold til paddlens placering og rammer højre side af paddlen vil bolden flyve tilbage i den retning den kom fra, ved at vende fortegn i begge af boldens akser.\newline
- \textcolor{red}{TILFØJ HVORDAN VI HAR LAVET INPUT LOGIC BJARNE }
+Paddlen er inddelt i højre og venstre halvdel, dette er gjort ved lave et tjek på hvor bolden rammer paddlen. Hvis boldens X-værdi når den rammer paddlen er mindre end placeringen af paddlens midte, har bolden ramt venstre side og er X-værdie derimod større end placeringen af paddlens midte, har den ramt højre. Hele dette tjek bruges til at give bolden den rette udgangsvinkel efter kollisionen med paddlen er sket. Herefter bliver der lavet et tjek på hvor boldens tidligere placering var, hvilket bruges til at udregne hvilken retning bolden kommer fra. Et eksempel på dette kan være hvis bolden kommer fra højre side i forhold til paddlens placering og rammer højre side af paddlen vil bolden flyve tilbage i den retning den kom fra, ved at vende fortegn i begge af boldens akser.
+
+Paddlen modtager også input fra tastaturet for at kunne bevæge den fra side til side. Man skal først aktivere input på \textit{player controlleren} for at kunne behandle input. Se figur \ref{dia:paddleenableinput}. 
+
+\begin{figure}
+	\begin{center}
+		\caption{Blueprint: Aktivere input.}
+		\label{dia:paddleenableinput}
+		\includegraphics[width=0.80\linewidth]{pictures/blueprints/paddle-enable-input}
+		\end{center}
+\end{figure}
+
+Når man trykker på enten A eller ventre pil tasterne, sætter vi en boolean variabel \textit{IsAPressed} til true. Når spilleren så slipper tasterne igen, bliver den sat til false. Denne bliver brugt til at rykke paddlen mod ventre i banen. Se figur \ref{dia:paddlehandleinput}. Fremover bliver der refereret til A selvom det også kan være pil venstre der er trykket ned. Det er det same der bliver gjort mod højre retning med \textit{IsDPressed}. Hvis man trykker på escape tasten loader den banen der har hoved menuen. Trykker man på space tasten bliver \textit{IsSpacePressed} sat til true, og false når man slipper tasten.
+
+\begin{figure}
+	\begin{center}
+		\caption{Blueprint: Håndtere input.}
+		\label{dia:paddlehandleinput}
+		\includegraphics[width=0.60\linewidth]{pictures/blueprints/paddle-handle-input}
+		\end{center}
+\end{figure}
+
+Det første der sker i EventTick'et er at vi ser om der bliver trykket på space. Dette sætter en anden variabel så bolden kan blive skudt afsted. Hvis man ikke trykker på space og bolden ikke er skudt afsted så den flyver frit rundt, skal den låses fast lige oven over paddle'en. Se figur \ref{dia:paddlelockball}.
+
+\begin{figure}
+	\begin{center}
+		\caption{Blueprint: Sæt til at skyde eller få bolden til at følge battet hvis den ikke er skudt.}
+		\label{dia:paddlelockball}
+		\includegraphics[width=0.98\linewidth]{pictures/blueprints/paddle-lock-ball}
+		\end{center}
+\end{figure}
+
+Efter det kontrolleres der om A er trykket ned, men ikke A og D på samme tid. Hvis begge er trykket ned har vi ikke lyst til at den skal bevæge sig mod venstre. Se figur \ref{dia:paddleisapressed}.
+
+\begin{figure}
+	\begin{center}
+		\caption{Blueprint: Kun aktivere hvis kun A er trykket og ikke A og B på samme tid.}
+		\label{dia:paddleisapressed}
+		\includegraphics[width=0.80\linewidth]{pictures/blueprints/paddle-is-a-pressed}
+		\end{center}
+\end{figure}
+
+Hvis kun A er trykket kan vi bevæge paddle'en mod venstre med en given hastighed. For at den ikke skal flytte sig ud over banens sider, er der sat en minimum X værdi som den skal være over for at kunne flytte sig mod venstre. Se figur \ref{dia:paddlemoveleft}. 
+
+\begin{figure}
+	\begin{center}
+		\caption{Blueprint: Flytter sig mod venstre hvis over minimums grænsen.}
+		\label{dia:paddlemoveleft}
+		\includegraphics[width=0.98\linewidth]{pictures/blueprints/paddle-move-left}
+		\end{center}
+\end{figure}
+
+Noget lignende funktionalitet gør sig gældende for at bevæge sig mod højre, bare med modsatte værdier for når D er trykket ned, men ikke D og A på samme tid.
 
 \section{Ball}
 Hvis bolden ikke er blevet skudt af fra paddlen vil den være låst fast til paddlen. Derimod hvis den er skudt fra paddlen vil bolden rykke sig med den hastighed der er sat af den lokale variabel \textit{direction vector}. Direction vector variablen bliver ændret alt efter hvad bolden kollidere med. Som tidligere nævnt i paddle afsnittet ligger logikken til kollision med paddlen i paddle blueprintet, derfor er der et tjek på om bolden kollidere med paddlen. Kollidere bolden ikke med paddlen bliver der tjekket på hit eventets \textit{hit normal variabel}, denne værdi fortæller hvilken side af bolden kollidere. Dette kan f.eks. være hvis \textit{hit normal X} er minus 1 er der tale om at boldens venstre side kollidere med et andet objekt. Gennem alle disse tjek kan der udregnes hvilket fortegn i hvilken akse der skal vendes i direction vectoren for at bolden får den korrekte retning efter kollision. I selve bold blueprintet ligger der også tjek på om spilleren har flere liv tilbage, eller om alle brikker er forsvundet fra spilverdenen. Dette sørger for at spilleren kommer tilbage til menuen hvis alle liv er mistet og at der bliver skabt nye brikker hvis alle brikkerne er ramt af bolden. Blueprintet indeholder også et tjek på om bolden er indenfor banen, befinder bolden sig ikke på banene mere vil der blive trukket 1 fra spillerens liv. Sidst men ikke mindst ligger der også logik for inputtet til at skyde bolden fra paddlen, dette gøres ved at når der trykkes på mellemrumstasten sættes den boolske værdi i \textit{has shot} variablen til true, og bolden går igennem det tidligere nævnte tjek.  

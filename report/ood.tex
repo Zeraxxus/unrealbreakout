@@ -22,4 +22,42 @@ Ligesom i C++ og C\# har blueprints member variables/fields, member functions, o
 \item[Level Blueprint]
 \end{list}
 
-Blueprint Class er det blueprint man bruger når man vil have et objekt til at gøre noget inde i et \textit{level}. Man laver noget funktionalitet i dette blueprint og tilføjer det til et objekt i et \textit{level}. Data-Only Blueprints indeholder kun nodes, variabler og komponenter som det har nedarvet og der kan ikke tilføjes nyt. Det den bruges til er at ændre på objekter i et \textit{level} og lave variationer som alle har samme interface, men forskellig adfærd. Level Blueprint er et blueprint som altid findes når man opretter et nyt \textit{level}. Det er et overordnet blueprint som eksisterer sammen med de Blueprints som sidder på objekter i banen. Man kan bruge Level Blueprint til at oprette events som andre objekters blueprints kan agere på. Man kan også oprette instancer af andre assets gennem Level Blueprint, som f.eks. et UI der skal tegnes i Camera Actor'en i banen. Se \cite{blueprint} for mere information.
+Blueprint Class er det blueprint man bruger når man vil have et objekt til at gøre noget inde i et \textit{level}. Man laver noget funktionalitet i dette blueprint og tilføjer det til et objekt i et \textit{level}. Data-Only Blueprints indeholder kun nodes, variabler og komponenter som det har nedarvet og der kan ikke tilføjes nyt. Det den bruges til er at ændre på objekter i et \textit{level} og lave variationer som alle har samme interface, men forskellig adfærd. Level Blueprint er et blueprint som altid findes når man opretter et nyt \textit{level}. Det er et overordnet blueprint som eksisterer sammen med de Blueprints som sidder på objekter i banen. Man kan bruge Level Blueprint til at oprette events som andre objekters blueprints kan agere på. Man kan også oprette instanser af andre assets gennem Level Blueprint, som f.eks. et UI der skal tegnes i Camera Actor'en i banen. Se \cite{blueprint} for mere information.
+
+I figur \ref{dia:codeblueprint1} kan ses et simpelt eksempel på hvordan noder kan sættes sammen i et blueprint. I eksemplet sættes to \textit{private int} variabler til to forskellige tal og derefter bliver de lagt sammen og sat i en tredje \textit{private int} variabel.
+
+Hvis man oversætter noderne fra blueprint eksemplet i figur \ref{dia:codeblueprint1} til for C\# kode, vil det være noget lignende koden i figur \ref{dia:codeblueprint2}. Unreal Engine 4 er lavet med C++ kode og alle noderne i blueprints omsættes også til C++ kode. Det er derfor at man skal \textit{compile} hver gang man laver ændringer i noderne. Vi er ikke klar over hvordan det præcist ser ud når Unreal Engine 4 compiler et blueprint om til en klasse i C++, men vi er ret sikker på at der bliver oprettet et par hjælpe metoder og variabler i dem for at \textit{game engine}'en kan holde styr på det hele. Der er for eksempel et \textit{BeginPlay} event man kan gøre brug af i editoren og et \textit{EventTick} event.
+
+\begin{figure}
+	\begin{center}
+		\caption{Simpelt eksempel på noder i blueprints.}
+		\label{dia:codeblueprint1}
+		\includegraphics[width=0.98\linewidth]{pictures/blueprints/blueprint-example}
+		\end{center}
+\end{figure}
+
+\begin{figure}
+\caption{C\# kode eksempel på noder i blueprints.}
+\label{dia:codeblueprint2}
+\begin{lstlisting}
+using System;
+
+public class ExampleClass
+{
+    private int VarA = 0;
+    private int VarB = 0;
+    private int VarC = 0;
+
+    public ExampleClass()
+    {
+    }
+    
+    public void BeginPlay()
+    {
+        VarA = 5;
+        VarB = 10;
+        VarC = VarA + VarB;
+    }
+}
+\end{lstlisting}
+\end{figure}
