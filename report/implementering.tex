@@ -5,7 +5,7 @@ Noget introduktion til vores implementering.
 
 
 \section{Level}
-
+Level blueprintet er banens "klasse". Denne har ikke meget, og forholdvist simpel logik. Når banen, eller selve spillet startes, bliver \textit{EventBeginPlay} kaldt, hvilket betyder at logikken der ligger i dette event kun bliver kaldt en gang når der startes med at spille. På dette event ligger logikken til at skifte synspunktet til kameraet i selve spilbanen, og logikken til at binde UI-blueprintet til samme viewport.
 
 \section{UI}
 
@@ -69,4 +69,5 @@ Noget lignende funktionalitet gør sig gældende for at bevæge sig mod højre, 
 Hvis bolden ikke er blevet skudt af fra paddlen vil den være låst fast til paddlen. Derimod hvis den er skudt fra paddlen vil bolden rykke sig med den hastighed der er sat af den lokale variabel \textit{direction vector}. Direction vector variablen bliver ændret alt efter hvad bolden kollidere med. Som tidligere nævnt i paddle afsnittet ligger logikken til kollision med paddlen i paddle blueprintet, derfor er der et tjek på om bolden kollidere med paddlen. Kollidere bolden ikke med paddlen bliver der tjekket på hit eventets \textit{hit normal variabel}, denne værdi fortæller hvilken side af bolden kollidere. Dette kan f.eks. være hvis \textit{hit normal X} er minus 1 er der tale om at boldens venstre side kollidere med et andet objekt. Gennem alle disse tjek kan der udregnes hvilket fortegn i hvilken akse der skal vendes i direction vectoren for at bolden får den korrekte retning efter kollision. I selve bold blueprintet ligger der også tjek på om spilleren har flere liv tilbage, eller om alle brikker er forsvundet fra spilverdenen. Dette sørger for at spilleren kommer tilbage til menuen hvis alle liv er mistet og at der bliver skabt nye brikker hvis alle brikkerne er ramt af bolden. Blueprintet indeholder også et tjek på om bolden er indenfor banen, befinder bolden sig ikke på banene mere vil der blive trukket 1 fra spillerens liv. Sidst men ikke mindst ligger der også logik for inputtet til at skyde bolden fra paddlen, dette gøres ved at når der trykkes på mellemrumstasten sættes den boolske værdi i \textit{has shot} variablen til true, og bolden går igennem det tidligere nævnte tjek.  
 
 \section{Brick}
+Brick er et blueprint som nedarver fra \textit{PaperSpriteActor}-blueprinttypen, dette vil sige at det er et blueprint der kan instansieres i verdenen med en sprite. Som sådan er det også den eneste logik der ligger på brick, årsagen til at den har et blueprint er for at Ball klassen kan kende forskel på hvad den rammer på \textit{OnHit}-events. Da det ikke ville være hensigten at fjerne f.eks. væggen i siden af banen når den blev ramt af bolden.
 
