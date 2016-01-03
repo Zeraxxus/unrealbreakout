@@ -2,7 +2,15 @@
 Noget introduktion til vores implementering.
 
 \section{Menu}
+Menuen er lavet i et Widget Blueprint hvori der er sat knapper op i en vertical box. Knapperne har tilhørende tekst som indikere deres funktion. Derudover er der sat et PNG-billede ind som baggrund for menuen. Play-knappen har et OnClick event der sørger for at skifte scene til gamemoden når der bliver trykket på den. Quit-knappen bruger en "Execute Console Command" til at lukke spillet ned nåt der bliver trykket på knappen. Se figur \ref{dia:menublueprint}. Menu blueprintet ligger inde i sin egen level, hvor den er instansieret i viewporten.
 
+\begin{figure}
+	\begin{center}
+		\caption{Menuens blueprint.}
+		\label{dia:menublueprint}
+		\includegraphics[width=0.80\linewidth]{pictures/blueprints/menu_blueprint}
+	\end{center}
+\end{figure}
 
 \section{Level}
 Level blueprintet er banens "klasse". Denne har ikke meget, og forholdvist simpel logik. Når banen, eller selve spillet startes, bliver \textit{EventBeginPlay} kaldt, hvilket betyder at logikken der ligger i dette event kun bliver kaldt en gang når der startes med at spille. På dette event ligger logikken til at skifte synspunktet til kameraet i selve spilbanen, og logikken til at binde UI-blueprintet til samme viewport.
@@ -16,7 +24,25 @@ Level blueprintet er banens "klasse". Denne har ikke meget, og forholdvist simpe
 \end{figure}
 
 \section{UI}
+GameHUD blueprint er et Widget Blueprint der viser UI mens man spiller. Den indeholder blot fire tekst felter, hvor to af dem er teksterne; "Balls" og "Score". De to andre tekst felter bliver opdateret løbende, med liv og score, når man spiller spillet. Se figur \ref{dia:gamehuddesign} for designet.
 
+\begin{figure}
+	\begin{center}
+		\caption{Spillets HUD(Heads Up Display).}
+		\label{dia:gamehuddesign}
+		\includegraphics[width=0.98\linewidth]{pictures/blueprints/gamehud-design}
+	\end{center}
+\end{figure}
+
+Der er to funktioner i GameHUD blueprintet; Balls og Score. Det er disse to funktioner som holder tekst felterne opdateret. Balls og Score variablerne er sat i Paddle Blueprint instansen på Paddle objektet i selve banen. For at få fat i disse variabler fra en anden instans, er man nødt til at søge efter instansen og så gemme en pointer til instansen lokalt hvor man skal bruge den. Da der kun er en paddle i banen kan vi bare tage den første instans der findes og sætte den i vores lokale variabel. Efter paddle blueprint instansen er fundet kan f.eks. Score variablen konverteres til tekst og returneres til GameHUD blueprintet hvor teksten så bliver opdateret. Se figur \ref{dia:gamehudscorefunction}. Tilsvarende sker med Balls variablen i en funktion som opdaterer teksten med hvor mange liv man har tilbage.
+
+\begin{figure}
+	\begin{center}
+		\caption{GameHUD opdater Score tekst funktion.}
+		\label{dia:gamehudscorefunction}
+		\includegraphics[width=0.98\linewidth]{pictures/blueprints/gamehud-score-function}
+	\end{center}
+\end{figure}
 
 \section{Paddle}
 Paddlen er inddelt i højre og venstre halvdel, dette er gjort ved lave et tjek på hvor bolden rammer paddlen. Hvis boldens X-værdi når den rammer paddlen er mindre end placeringen af paddlens midte, har bolden ramt venstre side og er X-værdie derimod større end placeringen af paddlens midte, har den ramt højre. Hele dette tjek bruges til at give bolden den rette udgangsvinkel efter kollisionen med paddlen er sket. Herefter bliver der lavet et tjek på hvor boldens tidligere placering var, hvilket bruges til at udregne hvilken retning bolden kommer fra. Et eksempel på dette kan være hvis bolden kommer fra højre side i forhold til paddlens placering og rammer højre side af paddlen vil bolden flyve tilbage i den retning den kom fra, ved at vende fortegn i begge af boldens akser.
@@ -27,7 +53,7 @@ Paddlen modtager også input fra tastaturet for at kunne bevæge den fra side ti
 	\begin{center}
 		\caption{Blueprint: Aktivere input.}
 		\label{dia:paddleenableinput}
-		\includegraphics[width=0.80\linewidth]{pictures/blueprints/paddle-enable-input}
+		\includegraphics[width=0.60\linewidth]{pictures/blueprints/paddle-enable-input}
 		\end{center}
 \end{figure}
 
@@ -37,7 +63,7 @@ Når man trykker på enten A eller ventre pil tasterne, sætter vi en boolean va
 	\begin{center}
 		\caption{Blueprint: Håndtere input.}
 		\label{dia:paddlehandleinput}
-		\includegraphics[width=0.60\linewidth]{pictures/blueprints/paddle-handle-input}
+		\includegraphics[width=0.50\linewidth]{pictures/blueprints/paddle-handle-input}
 		\end{center}
 \end{figure}
 
