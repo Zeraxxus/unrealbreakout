@@ -3,7 +3,7 @@ I følgende afsnit vil der blive gennemgået hvordan spillets logik er implement
 
 \section{Menu}
 \textit{Af Mathias Forsberg}\newline
-Menuen er lavet i et Widget Blueprint hvori der er sat knapper op i en vertical box. Knapperne har tilhørende tekst som indikere deres funktion. Derudover er der sat et PNG-billede ind som baggrund for menuen. Play-knappen har et OnClick event der sørger for at skifte scene til gamemoden når der bliver trykket på den. Quit-knappen bruger en "Execute Console Command" til at lukke spillet ned nåt der bliver trykket på knappen. Se figur \ref{dia:menublueprint}. Menu blueprintet ligger inde i sin egen level, hvor den er instansieret i viewporten.
+Menuen er lavet i et Widget Blueprint hvori der er sat knapper op i en vertical box. Knapperne har tilhørende tekst som indikere deres funktion. Derudover er der sat et PNG-billede ind som baggrund for menuen. Play-knappen har et OnClick event der sørger for at skifte scene til gamemoden når der bliver trykket på den. Quit-knappen bruger en  "Execute Console Command" til at lukke spillet ned nåt der bliver trykket på knappen. Se figur \ref{dia:menublueprint}. Menu blueprintet ligger inde i sin egen level, hvor den er instansieret i viewporten.
 
 \begin{figure}
 	\begin{center}
@@ -15,7 +15,7 @@ Menuen er lavet i et Widget Blueprint hvori der er sat knapper op i en vertical 
 
 \section{Level}
 \textit{Af Nichlas Bruun}\newline
-Level blueprintet er banens "klasse". Denne har ikke meget, og forholdvist simpel logik. Når banen, eller selve spillet startes, bliver \textit{EventBeginPlay} kaldt, hvilket betyder at logikken der ligger i dette event kun bliver kaldt en gang når der startes med at spille. På dette event ligger logikken til at skifte synspunktet til kameraet i selve spilbanen, og logikken til at binde UI-blueprintet til samme viewport. Se figur \ref{dia:levelblueprint}.
+Level blueprintet er banens "klasse". Denne har ikke meget, og forholdvist simpel logik. Når banen, eller selve spillet startes, bliver \textit{EventBeginPlay} kaldt, hvilket betyder at logikken der ligger i dette event kun bliver kaldt en gang når der startes med at spille. På dette event ligger logikken til at skifte synspunktet til kameraet i selve spilbanen, og logikken til at binde UI-blueprintet\footnote{User interface blueprint} til samme viewport. Se figur \ref{dia:levelblueprint}.
 
 \begin{figure}
 	\begin{center}
@@ -27,7 +27,7 @@ Level blueprintet er banens "klasse". Denne har ikke meget, og forholdvist simpe
 
 \section{UI}
 \textit{Af Bjarne Kristensen}\newline
-GameHUD blueprint er et Widget Blueprint der viser UI mens man spiller. Den indeholder blot fire tekst felter, hvor to af dem er teksterne; "Balls" og "Score". De to andre tekst felter bliver opdateret løbende, med liv og score, når man spiller spillet. Se figur \ref{dia:gamehuddesign} for designet.
+\textit{GameHUD} blueprint er et Widget Blueprint der viser UI mens man spiller. Den indeholder blot fire tekst felter, hvor to af dem er teksterne; "Balls" og "Score". De to andre tekst felter bliver opdateret løbende, med liv og score, når man spiller spillet. Se figur \ref{dia:gamehuddesign} for designet.
 
 \begin{figure}
 	\begin{center}
@@ -37,7 +37,7 @@ GameHUD blueprint er et Widget Blueprint der viser UI mens man spiller. Den inde
 	\end{center}
 \end{figure}
 
-Der er to funktioner i GameHUD blueprintet; Balls og Score. Det er disse to funktioner som holder tekst felterne opdateret. Balls og Score variablerne er sat i Paddle Blueprint instansen på Paddle objektet i selve banen. For at få fat i disse variabler fra en anden instans, er man nødt til at søge efter instansen og så gemme en pointer til instansen lokalt hvor man skal bruge den. Da der kun er en paddle i banen kan vi bare tage den første instans der findes og sætte den i vores lokale variabel. Efter paddle blueprint instansen er fundet kan f.eks. Score variablen konverteres til tekst og returneres til GameHUD blueprintet hvor teksten så bliver opdateret. Se figur \ref{dia:gamehudscorefunction}. Tilsvarende sker med Balls variablen i en funktion som opdaterer teksten med hvor mange liv man har tilbage.
+Der er to funktioner i \textit{GameHUD} blueprintet; Balls og Score. Det er disse to funktioner som holder tekst felterne opdateret. Balls og Score variablerne er sat i Paddle Blueprint instansen på Paddle objektet i selve banen. For at få fat i disse variabler fra en anden instans, er man nødt til at søge efter instansen og så gemme en pointer til instansen lokalt hvor man skal bruge den. Da der kun er en paddle i banen kan vi bare tage den første instans der findes og sætte den i vores lokale variabel. Efter paddle blueprint instansen er fundet kan f.eks. Score variablen konverteres til tekst og returneres til \textit{GameHUD} blueprintet hvor teksten så bliver opdateret. Se figur \ref{dia:gamehudscorefunction}. Tilsvarende sker med Balls variablen i en funktion som opdaterer teksten med hvor mange liv man har tilbage.
 
 \begin{figure}
 	\begin{center}
