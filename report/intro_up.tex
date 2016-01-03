@@ -1,14 +1,22 @@
 \section{Unified Process}
-Unified Process forkortes også UP og er en systemudviklingsmetode, der blev udviklet i slutningen af 90'erne af Ivar Jacobsen, Grady Booch og James Rumbaugh. I Unified Process gøres der brug af iterationer som projektet skal udvikles i, et større projekts iterationer varer typsik 2 til 6 uger. Når man udvikler et stykke software med Unified Process skal man igennem fire faser. Inception fasen hvor man forbereder hvilke ting der skal laves og danner et overblik over de forskellige opgaver der skal løses. Den næste fase kaldes Elaboration, i denne fase udvikles de centrale dele af programmet samt de dele der er vurderet sværest at lave, da de skal udvikles tidligt i processen så de ikke bliver udviklet under tidspres. Elaboration fasen er længere end Inception fasen, når fasen er slut vil kerneelementerne af programmet være udviklet. Efter Elaboration kommer Construction fasen, her udvikles de elementer i systemet som skal til for at programmet bliver færdigt, samt at programmet testes løbende igennem fasen. Construction fasen består af mindre iterationer, og det er også fasen hvor man begynder at alpha teste programmet. Udover tests bliver der også udført performance tuning og dokumentation i Construction fasen. Sidst men ikke mindst er der Transition fasen, dette er fasen hvor programmet bliver udgivet, Transition fasen kan have flere iterationer hvor programmet får anmeldelser og feedback inden det bliver udgivet. \newline
+\textit{Af Mathias Forsberg}\newline
+Unified Process forkortes også UP og er en systemudviklingsmetode, der blev udviklet i slutningen af 90'erne af Ivar Jacobsen, Grady Booch og James Rumbaugh. I Unified Process gøres der brug af iterationer som projektet skal udvikles i, et større projekts iterationer varer typsik 2 til 6 uger. Når man udvikler et stykke software med Unified Process skal man igennem fire faser. Inception fasen hvor man forbereder hvilke ting der skal laves og danner et overblik over de forskellige opgaver der skal løses. Den næste fase kaldes Elaboration, i denne fase udvikles de centrale dele af programmet samt de dele der er vurderet sværest at lave, da de skal udvikles tidligt i processen så de ikke bliver udviklet under tidspres. Elaboration fasen er længere end Inception fasen, når fasen er slut vil kerneelementerne af programmet være udviklet. Efter Elaboration kommer Construction fasen, her udvikles de elementer i systemet som skal til for at programmet bliver færdigt, samt at programmet testes løbende igennem fasen. Construction fasen består af mindre iterationer, og det er også fasen hvor man begynder at alpha teste programmet. Udover tests bliver der også udført performance tuning og dokumentation i Construction fasen. Sidst men ikke mindst er der Transition fasen, dette er fasen hvor programmet bliver udgivet, Transition fasen kan have flere iterationer hvor programmet får anmeldelser og feedback inden det bliver udgivet.\newline
+Se \cite[chap. 9]{Larman200308} for kilde. \newline
 \newline
-\subsection{Vores Forløb med Unified Process}
-I processen med at skabe Unreal Breakout har det ikke været muligt at nå alt som Unified Process indebærer, dog har det stadig været muligt at følge det. Inception fasen blev fuldført med objekt orienteret analyse og design, samt udarbejdelsen af et Gantt-chart, som estimere tiden der skal bruges på de forskellige dele af projektet. Der blev også udarbejdet en risikovurdering i inceptionfasen som skulle vurdere de forskellige risici der er ved at lave et større projekt, samt sætte tal på hvor alvorlige problemerne der kan opstå er. \newline
-I Elaboration fasen blev det lavet én iteration for at få grundelementerne i spillet lavet, iterationen varede i alt 5 dage og resulterede i at spillet blev til et spilbart. Der blev i fasen taget højde for hvilke elementer der ville være tidskrævende at udvikle og disse elementer blev lavet først i fasen. \newline
+\subsection{Argumentation for valg af Projektstyring}
+\textit{Af Mathias Forsberg, Bjarne Kristensen og Nichlas Bruun}\newline
+Da gruppen kun består af tre medlemmer og spilprojektet ikke er for omfattende blev det vurderet at Unified Process vil være optimal at benytte til dette projekt. Scrum er også en populær form for projektstyring, med mange værktøjer. Scrums værktøjer virker dog mere velegnede til større projekter med mange udviklere der skal arbejde og kommunikere sammen.
+\subsection{Forløbet med Unified Process}
+\textit{Af Mathias Forsberg}\newline
+I processen med at skabe Unreal Breakout har der ikke været behov for alt som Unified Process indebærer, dog har der stadig været mange brugbare værktøjer. Inception fasen blev fuldført med objekt orienteret analyse og design, samt udarbejdelsen af et Ganttdiagram, som estimere tiden der skal bruges på de forskellige dele af projektet. 
+
+Der blev også udarbejdet en risikovurdering i inceptionfasen som skulle vurdere de forskellige risici der er ved at lave et større projekt, samt sætte tal på hvor alvorlige problemerne der kan opstå er. 
+
+I Elaboration fasen blev det lavet én iteration for at få grundelementerne i spillet lavet, iterationen varede i alt 5 dage og resulterede i at spillet blev til et spilbart. Der blev i fasen taget højde for hvilke elementer der ville være tidskrævende at udvikle og disse elementer blev lavet først i fasen. 
+
 Efter Elaboration fasen begyndte Construction fasen. Construction fasen bestod af én kort iteration hvor der blev fortaget en Blackbox test på programmet samt rettet småfejl. 
-\newline
-Transition fasen blev ikke taget i brug i processen med at lave Unreal Breakout da produktet ikke skulle leveres til en kunde og først får ekstern feedback til eksamen. 
- 
-\subsection{Fasediagram}
+
+Transition fasen blev ikke taget i brug i processen med at lave Unreal Breakout da produktet ikke skulle leveres til en kunde og først får ekstern feedback til eksamen. Se det kan ses i figur \ref{dia:upphase} er der udarbejdet et Unified Process Phasediagram i samspil med Ganttdiagrammet, for at give et bedre overblik af projektet.
 
 \begin{figure}
 	\begin{center}
@@ -19,6 +27,7 @@ Transition fasen blev ikke taget i brug i processen med at lave Unreal Breakout 
 \end{figure}
 
 \subsection{Risikoanalyse}
+\textit{Af Mathias Forsberg, Bjarne Kristensen og Nichlas Bruun}\newline
 Som det kan ses i tabel \ref{tbl:risikoanalyse} er der udarbejdet en risikovurdering som kan hjælpe med at identificere steder som kan volde problemer for projektet. Disse risici kan være med til at gøre hele projektet længere hvis ikke man tager højde for dem på forhånd og indarbejder dem i sin tidsestimering.
 
 \begin{table}[]
@@ -42,7 +51,19 @@ Det kan også hænde at der skal laves en ændring i gamedesignet, men da det er
 
 Tekniske problemer vil højest sandsynligt opstå da udviklerne i gruppen alle er nye til Unreal Engine. Derfor vil der være meget søgning efter problemløsninger på internettet og Unreal Engines online dokumentation.
 
-Selvom det ikke er sandsynligt at det vil ske, vil det være alvorligt med en fejlestimering. Grundet projektets omfang vil risikoværdien være lav, da planlægning er nem at overskue. Er der fejlestimering er det selvsigende at dette får kraftig indflydelse på tidsplanen.
+Selvom det ikke er sandsynligt at det vil ske, vil det være alvorligt med en fejlestimering. Grundet projektets omfang vil risikoværdien være lav, da planlægning er nem at overskue. Ved en fejlestimering er det selvsigende, at dette får kraftig indflydelse på tidsplanen.
+
+Risikoen for et internetnedbrud er meget lav i vore dage, det kan dog forekomme på et belastet netværk. Men det vil have en indflydelse på arbejdsprocessen, da der som tidligere nævnt vil være meget arbejde, der kommer til at foregå ved at samle informationer på internettet.
  
 \subsection{Ganttdiagram}
+\textit{Af Mathias Forsberg, Bjarne Kristensen og Nichlas Bruun}\newline
+Ganttdiagrammet er udviklet fra bl.a. en information der er blevet tilgængelig fra risikoanalysen. Diagrammet har været tilgængeligt for hele gruppen på google drive, da diagrammet er lavet i googles eget regneark-format: google sheets. Ganttdiagrammet viser gruppens tidsplanlægning, ved at give en oversigt over det tidsrum opgaven laves, derefter er der blevet planlagt hvad der skal laves hvilke dage. Ganttdiagrammet viser dog også de dage hvor der ikke er planlagt arbejde, så som weekender og feriedage, så der kan plottes arbejdsdage på efter behov under tidspres.
+
+\begin{figure}
+	\begin{center}
+		\caption{Gantt Chart.}
+		\label{dia:ganttpre}
+		\includegraphics[width=1\linewidth]{pictures/up/ganttpre}
+	\end{center}
+\end{figure}
 

@@ -1,14 +1,16 @@
 \rhschapter{Object Orienteret Design}
 
 \section{Gameplay}
+\textit{Af Bjarne Kristensen}\newline
 Unreal Breakout er et spil med et bat\footnote{Paddle på engelsk, bliver brugt i vores paddle klasse.}, en bold\footnote{Ball på engelsk, bliver brugt i vores ball klasse.}, en masse brikker\footnote{Bricks på engelsk, bliver brugt i vores bricks klasse.}, tre lukkede sidder, og en åben side i bunden. Formålet med spillet er at få bolden til at ramme alle brikkerne og sørge for at bolden ikke ryger ud af banen i bunden hvor spillerens bat og den åbne side er. Når man rammer en brik, går den i stykker eller skifter farve, når en brik rammes vil der blive tilføjet point til spillerens score. Når spillet starter har man 3 liv(bolde) og bolden er låst fast på spillerens bat nederst i midten af skærmen. Når man trykker på en dertil bestemt knap skyder man bolden afsted, og med nogle andre knapper bevæger man battet fra side til side for at undgå at bolden ryger ud af spilområdet. Hvis bolden ryger ud af spilområdet, mister man et liv(bold) og en ny bold bliver låst fast til battet og er klar til at blive skudt afsted. Når spilleren har mistet alle liv og den sidste bold ryger ud af spilområdet, slutter spillet. Får man til gengæld fjernet alle brikker, vindes banen og den samme bane kommer igen uden at ændre på antal liv spilleren har tilbage eller nulstille scoren, og bolden bliver igen fastlåst til battet.
 
 \section{Grafik} 
-
+\textit{Af Mathias Forsberg}\newline
 Spillets grafik er fundet på \textit{opengameart.org}, som er en hjemmeside hvor folk lægger grafik op til fri afbenyttelse. Dette betyder at det er uden licens men man kan dog donere penge til de brugere der har lagt grafikken tilgængelig på siden. Nogle af grafikerne på siden vil dog gerne have deres navn nævnt hvis deres grafik bruges. \newline
 Breakout er et gammelt spil udviklet af Atari, derfor er der fundet grafik som er tro mod det klassiske spils grafik. Grafikken ligger på nogle spritesheets som er kollager af billeder som bliver brugt til at skabe de forskellige elementer i spillet. Når spritesheetet er delt op vil de forskellige brikker blive bygget op til en bane. Eftersom spilleren rammer brikkerne med bolden vil de skifte farve, farverne indikere hvor mange gange en brik skal rammes for at blive ødelagt. De grafiske elementer er ikke noget der vil blive sat stor fokus på i spillet, da det er spillets gameplay der skal være grundpillen i det. 
 
 \section{Blueprints}
+\textit{Af Bjarne Kristensen}\newline
 Blueprints er en speciel type asset som giver en node baseret interface til at lave nye klasser og udvide klasser, så man kan scripte objekter i levels og widgets. Blueprints er et værktøj der giver designers og gameplay-programmører mulighed for hurtigt at kunne udvikle deres idéer uden at skulle skrive kode.
 
 Det er stadig muligt selv at oprette klasser med C++ kode uden at bruge blueprints. Blueprints kan bruges til at udvide klasser som er skrevet i C++, gemme og modificere properties og håndtere objektinstanser i klasser.

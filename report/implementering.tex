@@ -1,7 +1,8 @@
 \rhschapter{Implementering}
-Noget introduktion til vores implementering.
+I følgende afsnit vil der blive gennemgået hvordan spillets logik er implementeret i Unreal Engine 4.
 
 \section{Menu}
+\textit{Af Mathias Forsberg}\newline
 Menuen er lavet i et Widget Blueprint hvori der er sat knapper op i en vertical box. Knapperne har tilhørende tekst som indikere deres funktion. Derudover er der sat et PNG-billede ind som baggrund for menuen. Play-knappen har et OnClick event der sørger for at skifte scene til gamemoden når der bliver trykket på den. Quit-knappen bruger en "Execute Console Command" til at lukke spillet ned nåt der bliver trykket på knappen. Se figur \ref{dia:menublueprint}. Menu blueprintet ligger inde i sin egen level, hvor den er instansieret i viewporten.
 
 \begin{figure}
@@ -13,7 +14,8 @@ Menuen er lavet i et Widget Blueprint hvori der er sat knapper op i en vertical 
 \end{figure}
 
 \section{Level}
-Level blueprintet er banens "klasse". Denne har ikke meget, og forholdvist simpel logik. Når banen, eller selve spillet startes, bliver \textit{EventBeginPlay} kaldt, hvilket betyder at logikken der ligger i dette event kun bliver kaldt en gang når der startes med at spille. På dette event ligger logikken til at skifte synspunktet til kameraet i selve spilbanen, og logikken til at binde UI-blueprintet til samme viewport.
+\textit{Af Nichlas Bruun}\newline
+Level blueprintet er banens "klasse". Denne har ikke meget, og forholdvist simpel logik. Når banen, eller selve spillet startes, bliver \textit{EventBeginPlay} kaldt, hvilket betyder at logikken der ligger i dette event kun bliver kaldt en gang når der startes med at spille. På dette event ligger logikken til at skifte synspunktet til kameraet i selve spilbanen, og logikken til at binde UI-blueprintet til samme viewport. Se figur \ref{dia:levelblueprint}.
 
 \begin{figure}
 	\begin{center}
@@ -24,6 +26,7 @@ Level blueprintet er banens "klasse". Denne har ikke meget, og forholdvist simpe
 \end{figure}
 
 \section{UI}
+\textit{Af Bjarne Kristensen}\newline
 GameHUD blueprint er et Widget Blueprint der viser UI mens man spiller. Den indeholder blot fire tekst felter, hvor to af dem er teksterne; "Balls" og "Score". De to andre tekst felter bliver opdateret løbende, med liv og score, når man spiller spillet. Se figur \ref{dia:gamehuddesign} for designet.
 
 \begin{figure}
@@ -45,6 +48,7 @@ Der er to funktioner i GameHUD blueprintet; Balls og Score. Det er disse to funk
 \end{figure}
 
 \section{Paddle}
+\textit{Af Mathias Forsberg, Bjarne Kristensen og Nichlas Bruun}\newline
 Paddlen er inddelt i højre og venstre halvdel, dette er gjort ved lave et tjek på hvor bolden rammer paddlen. Hvis boldens X-værdi når den rammer paddlen er mindre end placeringen af paddlens midte, har bolden ramt venstre side og er X-værdie derimod større end placeringen af paddlens midte, har den ramt højre. Hele dette tjek bruges til at give bolden den rette udgangsvinkel efter kollisionen med paddlen er sket. Herefter bliver der lavet et tjek på hvor boldens tidligere placering var, hvilket bruges til at udregne hvilken retning bolden kommer fra. Et eksempel på dette kan være hvis bolden kommer fra højre side i forhold til paddlens placering og rammer højre side af paddlen vil bolden flyve tilbage i den retning den kom fra, ved at vende fortegn i begge af boldens akser.
 
 Paddlen modtager også input fra tastaturet for at kunne bevæge den fra side til side. Man skal først aktivere input på \textit{player controlleren} for at kunne behandle input. Se figur \ref{dia:paddleenableinput}. 
@@ -100,8 +104,10 @@ Hvis kun A er trykket kan vi bevæge paddle'en mod venstre med en given hastighe
 Noget lignende funktionalitet gør sig gældende for at bevæge sig mod højre, bare med modsatte værdier for når D er trykket ned, men ikke D og A på samme tid.
 
 \section{Ball}
+\textit{Af Mathias Forsberg og Nichlas Bruun}\newline
 Hvis bolden ikke er blevet skudt af fra paddlen vil den være låst fast til paddlen. Derimod hvis den er skudt fra paddlen vil bolden rykke sig med den hastighed der er sat af den lokale variabel \textit{direction vector}. Direction vector variablen bliver ændret alt efter hvad bolden kollidere med. Som tidligere nævnt i paddle afsnittet ligger logikken til kollision med paddlen i paddle blueprintet, derfor er der et tjek på om bolden kollidere med paddlen. Kollidere bolden ikke med paddlen bliver der tjekket på hit eventets \textit{hit normal variabel}, denne værdi fortæller hvilken side af bolden kollidere. Dette kan f.eks. være hvis \textit{hit normal X} er minus 1 er der tale om at boldens venstre side kollidere med et andet objekt. Gennem alle disse tjek kan der udregnes hvilket fortegn i hvilken akse der skal vendes i direction vectoren for at bolden får den korrekte retning efter kollision. I selve bold blueprintet ligger der også tjek på om spilleren har flere liv tilbage, eller om alle brikker er forsvundet fra spilverdenen. Dette sørger for at spilleren kommer tilbage til menuen hvis alle liv er mistet og at der bliver skabt nye brikker hvis alle brikkerne er ramt af bolden. Blueprintet indeholder også et tjek på om bolden er indenfor banen, befinder bolden sig ikke på banene mere vil der blive trukket 1 fra spillerens liv. Sidst men ikke mindst ligger der også logik for inputtet til at skyde bolden fra paddlen, dette gøres ved at når der trykkes på mellemrumstasten sættes den boolske værdi i \textit{has shot} variablen til true, og bolden går igennem det tidligere nævnte tjek.  
 
 \section{Brick}
+\textit{Af Nichlas Bruun}\newline
 Brick er et blueprint som nedarver fra \textit{PaperSpriteActor}-blueprinttypen, dette vil sige at det er et blueprint der kan instansieres i verdenen med en sprite. Som sådan er det også den eneste logik der ligger på brick, årsagen til at den har et blueprint er for at Ball klassen kan kende forskel på hvad den rammer på \textit{OnHit}-events. Da det ikke ville være hensigten at fjerne f.eks. væggen i siden af banen når den blev ramt af bolden.
 

@@ -2,6 +2,7 @@
 
 \section{Systemdefinition}
 \subsection{FACTOR}
+\textit{Af Nichlas Bruun}\newline
 \textbf{Functionality}
 \newline
 -Bevægelse af Paddle, Fjernelse af bricks, Scoring, Liv.
@@ -22,19 +23,27 @@ til kraftig PC.
 -Paddle, Ball, Bricks.
 \newline
 \textbf{Responsibility}\newline
--Et spilbart produkt.
+-Et spilbart produkt.\newline
+\newline
+Se \cite[chap. 2.7]{Mathiassen200006} for kilde.
 
 \subsection{Sytemdefinition}
+\textit{Af Nichlas Bruun}\newline
 Unreal Breakout er et klassisk arkade spil, som giver spilleren mulighed for at opleve det klassiske gameplay fra Atari Breakout. Som består af at spilleren bevæger en "paddle" i bunden af skærmen, for at forsøge at holde en bold inden for skærmens rammer, samtidigt med at der skal opnås point ved at fjerne "bricks" i toppen af skærmen.
 Der vil være fokus på spillets kode og funktionalitet. Spillet udvikles til Windows PC
 i Unreal Engine 4, og styres med keyboard. Spillet vil kunne køre på en Windows PC købt indenfor de sidste 5 år.
-Ansvaret over for spilleren vil være et meget basalt virkende spil.
-\section{Funktionstabel}
-Der er blevet udarbejdet en funktionstabel (se  tabel \ref{funktionstabel}) ud fra de funktioner, som er  planlagt at skulle indgå i programmets første version. Disse funktioner er inddelt efter navn, kompleksitet og type. Navnet er hvad funktionen kommer til at omhandle og kompleksitet er hvor udfordrende det vil være at lave den pågældende funktion. Typen er til at bestemme, om det er noget der skal opdateres, læses, sende et signal eller beregne noget. Der er ikke noget komplekst i spillet, der er to funktioner som menes at have en kompleksitet på medium, dette relatere til bolden interaktion med andre objekter. De resterende funktioner menes at være simple at implementere.
+Ansvaret over for spilleren vil være et meget basalt virkende spil. \newline \newline
+Se \cite[chap. 2.1]{Mathiassen200006} for kilde.
+\section{Funktionsliste}
+\textit{Af Bjarne Kristensen}\newline
+Der er blevet udarbejdet en Funktionsliste (se  tabel \ref{Funktionsliste}) ud fra de funktioner, som er  planlagt at skulle indgå i programmets første version. Disse funktioner er inddelt efter navn, kompleksitet og type. Navnet er hvad funktionen kommer til at omhandle og kompleksitet er hvor udfordrende det vil være at lave den pågældende funktion. Typen er til at bestemme, om det er noget der skal opdateres, læses, sende et signal eller beregne noget. Der er ikke noget komplekst i spillet, der er to funktioner som menes at have en kompleksitet på medium, dette relatere til bolden interaktion med andre objekter. De resterende funktioner menes at være simple at implementere.\newline \newline
+
+Se \cite[chap. 7.3, fig. 7.6]{Mathiassen200006} for kilde.
+
 \begin{table}[]
 \centering
-\caption{Funktionstabel}
-\label{funktionstabel}
+\caption{Funktionsliste}
+\label{Funktionsliste}
 \begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{1}{|c|}{Navn} & \multicolumn{1}{c|}{Kompleksitet} & \multicolumn{1}{c|}{Type} \\ \hline
@@ -50,8 +59,8 @@ Show Score & simpel & read \\ \hline
 \end{tabular}
 \end{table}
 
-\section{Analyse Diagram}
-
+\section{Analysediagram}
+\textit{Af Nichlas Bruun}\newline
 \subsection{Menu}
 Menu klassen kommer til at være et "level blueprint" i Unreal Engine. Den skal håndtere indlæsning af menupunkter, i form af knapper og baggrundsgrafik. Menuens blueprint kommer til at håndtere "OnClick events" hvilket i dette tilfælde er en "Play-" og en "Quit-knap". Som i samme nævnte rækkefølge, kommer til at starte spillet, og lukke spillet.
 
@@ -72,11 +81,15 @@ Brick-klassen kommer til at ligge på alle de objekter spilleren skal forsøge a
 Paddle-klassen kan tolkes som selve spillerens klasse, denne klasse vil håndtere input fra spilleren. Det vil sige at når spilleren trykker på venstre eller højre pil, bevæger Paddlen sig i den korrekte retning. Den vil også give de korrekte funktionskald til bolden, alt efter hvilken del af Paddlen bolden rammer, og give den korrekte vinkel med til bolden. Når spillet startes eller når spilleren dør, Vil Paddlen også kunne bruges til at skyde bolden afsted, da bolden er stationær på Paddlen i begyndelsen. Bolden skydes afsted fra paddlen ved brug af mellemrumstasten. 
 
 \subsection{Ball}
-Ball er bolden i spillet, og klassen vil håndtere bolden, samtidigt med de tidligere nævnte funktionskald. Bolden vil også stå for vind/tab-konditionen i spillet, ved at tjekke om den er udenfor bunden af skærmen, og lade spilleren miste liv hvis den er udenfor.
+Ball er bolden i spillet, og klassen vil håndtere bolden, samtidigt med de tidligere nævnte funktionskald. Bolden vil også stå for vind/tab-konditionen i spillet, ved at tjekke om den er udenfor bunden af skærmen, og lade spilleren miste liv hvis den er udenfor.\newline \newline
+
+Se \cite[chap. 4]{Mathiassen200006} for kilde.
 
 
 \section{Hændelsestabel}
-En hændelse, i objektorienteret kontekst, er en situation hvor en eller flere objekter er involveret. Det er f.eks. hændelser hvor spilleren giver et input som objekter i spillet skal agere på. Det kan også være hændelser i spillet som sker når to objekter kolliderer med hinanden og en aktion ønskes. I tabel \ref{eventtabel} er der opstillet hvilke hændelser vi regner med vil ske, og hvilke objekter der kan være involveret i disse hændelser.
+\textit{Af Bjarne Kristensen}\newline
+En hændelse, i objektorienteret kontekst, er en situation hvor en eller flere objekter er involveret. Det er f.eks. hændelser hvor spilleren giver et input som objekter i spillet skal agere på. Det kan også være hændelser i spillet som sker når to objekter kolliderer med hinanden og en aktion ønskes. I tabel \ref{eventtabel} er der opstillet hvilke hændelser vi regner med vil ske, og hvilke objekter der kan være involveret i disse hændelser.\newline \newline
+Se \cite[chap. 3]{Mathiassen200006} for kilde.
 \begin{table}[]
 \centering
 \caption{Hændelsestabel}
@@ -93,7 +106,7 @@ Score updates &  & X & X &  & X &  & X \\ \hline
 \end{table}
 
 \section{Use Cases}
-
+\textit{Af Mathias Forsberg}\newline
 \textbf{Start Spillet}\newline
 
 \textbf{Scope:}\newline
@@ -196,3 +209,5 @@ Spilleren har startet spillet og trykker på \textit{escape}-knappen, herefter v
 
 \textbf{Extensions:}\newline
 Befinder spilleren sig allerede i menuen vil \textit{escape}-knappen ikke have nogen effekt.\newline
+\newline
+Se \cite[chap. 6.1]{Mathiassen200006} for kilde.
